@@ -1,0 +1,10 @@
+==========================Exercise Checking Report==========================
+Exercise No...........: 2
+First Student Details.: 318446358 - Or Ganzian
+Second Student Details: 320407190- Maxim Boyar
+Delivery Date.........: 04 - May - 2021
+Delivered In Delay....: No
+Delay Reason..........: None
+Visual Studio Version.: 2019
+Comments..............: None
+========================End Exercise Checking Report========================
