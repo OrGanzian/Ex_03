@@ -35,10 +35,15 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddCarToGarage.cs" />
+    <Compile Include="Battery.cs" />
     <Compile Include="Car.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="ElectricCar.cs" />
-    <Compile Include="ElectricMotorcycle.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="EngineTypeException.cs" />
+    <Compile Include="Fuel.cs" />
+    <Compile Include="FuelTypeException.cs" />
+    <Compile Include="Garage.cs" />
+    <Compile Include="MissingVehicleException.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />

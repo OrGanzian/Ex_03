@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Ex03.ConsoleUI
+﻿namespace Ex03.ConsoleUI
 {
-    class Program
+    public class Program
     {
-        // main 
-        
-
+        public static void Main()
+        {
+            ConsoleUserInterface consoleUserInterface = new ConsoleUserInterface();
+            consoleUserInterface.Start();
+        }
     }
 }
