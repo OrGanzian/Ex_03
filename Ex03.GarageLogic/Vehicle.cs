@@ -5,7 +5,7 @@ namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-        public List<Wheel> m_Wheels;
+        protected  List<Wheel> m_Wheels; 
 
         public abstract void SetFuel();
         public enum eVehicleType

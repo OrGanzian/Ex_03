@@ -4,7 +4,7 @@ namespace Ex03.GarageLogic
 {
     public class Car : Vehicle
     {
-        private int m_NumOfWheels = 4;
+        private const int k_NumOfWheels = 4;
         private const float k_MaxBatterySize = 3.2f;
         public enum eColor
         {
@@ -26,7 +26,7 @@ namespace Ex03.GarageLogic
             base(i_Model, i_LicenseNumber, i_EngineType)
         {
 
-            for (int i = 0; i < this.m_NumOfWheels; i++)
+            for (int i = 0; i < k_NumOfWheels; i++)
             {
                 Wheel wheelToAdd = new Wheel(i_WheelsModel, (float)Wheel.eMaxAirPressure.Car);
                 m_Wheels.Add(wheelToAdd);
@@ -61,7 +61,6 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             return base.ToString() + string.Format("Car color = {0}{2}Number of doors = {1}{2}", CarColor, NumbersOfDoors, Environment.NewLine);
-
         }
     }
 }
