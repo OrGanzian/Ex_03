@@ -4,7 +4,7 @@ namespace Ex03.GarageLogic
 {
     public class AddCarToGarage
     {
-        public  Vehicle AddVehicle(string i_Model, string i_LicenseNumber, string i_WheelModel, Engine.eTypeOfEngine i_EngineTypeType, Vehicle.eVehicleType i_VehicleType)
+        public Vehicle AddVehicle(string i_Model, string i_LicenseNumber, string i_WheelModel, Engine.eTypeOfEngine i_EngineTypeType, Vehicle.eVehicleType i_VehicleType)
         {
             Vehicle newVehicleToAdd = null;
             switch (i_VehicleType)
@@ -21,6 +21,7 @@ namespace Ex03.GarageLogic
                 default:
                     throw new ArgumentOutOfRangeException(nameof(i_VehicleType), i_VehicleType, null);
             }
+
             return newVehicleToAdd;
         }
     }

@@ -6,6 +6,7 @@ namespace Ex03.GarageLogic
     {
         private const int k_NumOfWheels = 4;
         private const float k_MaxBatterySize = 3.2f;
+
         public enum eColor
         {
             Red = 1,
@@ -25,7 +26,6 @@ namespace Ex03.GarageLogic
         public Car(string i_Model, string i_LicenseNumber, Engine.eTypeOfEngine i_EngineType, string i_WheelsModel) :
             base(i_Model, i_LicenseNumber, i_EngineType)
         {
-
             for (int i = 0; i < k_NumOfWheels; i++)
             {
                 Wheel wheelToAdd = new Wheel(i_WheelsModel, (float)Wheel.eMaxAirPressure.Car);
@@ -35,13 +35,9 @@ namespace Ex03.GarageLogic
             SetFuel();
         }
 
-        public eColor CarColor
-        { get; set; }
+        public eColor CarColor { get; set; }
 
-        public eNumOfDoors NumbersOfDoors
-        { get; set; }
-
-
+        public eNumOfDoors NumbersOfDoors { get; set; }
 
         public override void SetFuel()
         {
@@ -54,7 +50,6 @@ namespace Ex03.GarageLogic
             {
                 ((Battery)EngineType).FuelType = Battery.eTypeOfFuel.ElectricalPower;
                 EngineType.CurrCapacity = k_MaxBatterySize;
-
             }
         }
 

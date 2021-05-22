@@ -2,7 +2,6 @@
 {
     public abstract class Engine
     {
-
         public void AddEnergy(float i_EnergyToAdd)
         {
             if (CurrEnergy + i_EnergyToAdd > CurrCapacity || CurrEnergy + i_EnergyToAdd < 0)
@@ -15,19 +14,14 @@
             }
         }
 
-        public float CurrCapacity
-        { get; set; }
+        public float CurrCapacity { get; set; }
 
-        public float CurrEnergy
-        { get; set; }
+        public float CurrEnergy { get; set; }
 
         public enum eTypeOfEngine
         {
             Fuel,
             Battery,
         }
-
-
-
     }
 }

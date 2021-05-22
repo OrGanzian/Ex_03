@@ -4,13 +4,13 @@ namespace Ex03.GarageLogic
 {
     public class Fuel : Engine
     {
-
         public enum eMaximumFuelCapacity
         {
             Motorcycle = 6,
             Car = 45,
             Truck = 120,
         }
+
         public enum eFuelType
         {
             Soler,
@@ -19,8 +19,7 @@ namespace Ex03.GarageLogic
             Octan98,
         }
 
-        public eFuelType FuelType
-        { get; set; }
+        public eFuelType FuelType { get; set; }
 
         public override string ToString()
         {

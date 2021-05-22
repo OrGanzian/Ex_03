@@ -2,10 +2,9 @@
 
 namespace Ex03.GarageLogic
 {
-
     public class Motorcycle : Vehicle
     {
-        public enum eLicenseType //fixed
+        public enum eLicenseType
         {
             A = 1,
             B1,
@@ -13,18 +12,18 @@ namespace Ex03.GarageLogic
             BB,
         }
 
-        private const float k_MaxBattery = 1.8f; // fixed
+        private const float k_MaxBattery = 1.8f;
 
         public Motorcycle(string i_ModelName, string i_LicenseNumber, string i_WheelModel, Engine.eTypeOfEngine i_EngineTypeSource)
             : base(i_ModelName, i_LicenseNumber, i_EngineTypeSource)
         {
-
             const int k_NumOfWheels = 2;
 
             for (int i = 0; i < k_NumOfWheels; i++)
             {
                 m_Wheels.Add(new Wheel(i_WheelModel, (float)Wheel.eMaxAirPressure.Motorcycle));
             }
+
             SetFuel();
         }
 

@@ -10,6 +10,7 @@ namespace Ex03.GarageLogic
             MaxValue = i_MaxValue;
             MinValue = i_MinValue;
         }
+
         public float MaxValue { get; }
 
         public float MinValue { get; }

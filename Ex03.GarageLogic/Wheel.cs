@@ -23,7 +23,6 @@ namespace Ex03.GarageLogic
 
         public string ManufacturerName { get; }
 
-
         public void FillToMaximum()
         {
             this.CurrentAirPressure = this.MaxAirPressure;
@@ -40,6 +39,7 @@ namespace Ex03.GarageLogic
                 this.CurrentAirPressure = this.CurrentAirPressure + i_AmountOFAirToAdd;
             }
         }
+
         public override string ToString()
         {
             return string.Format("Wheel manufacturer company name = {0}{3}Current air pressure = {1}{3}Maximum air pressure = {2}{3}", ManufacturerName, CurrentAirPressure, MaxAirPressure, Environment.NewLine);

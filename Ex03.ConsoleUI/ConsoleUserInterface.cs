@@ -1,16 +1,16 @@
-﻿using Ex02.ConsoleUtils;
-using Ex03.GarageLogic;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Ex02.ConsoleUtils;
+using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-
     public class ConsoleUserInterface
     {
         private readonly Garage r_Garage;
         private bool m_ProgramExit;
         private AddCarToGarage addCarToGarage;
+
         public ConsoleUserInterface()
         {
             this.addCarToGarage = new AddCarToGarage();
@@ -30,15 +30,12 @@ namespace Ex03.ConsoleUI
             ExitProgram,
         }
 
-
         private static void printMainMenu()
         {
-
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Garage management program");
             Console.ResetColor();
-
 
             const string k_Menu = @"
 Please enter your choise (1-8)
@@ -134,8 +131,6 @@ Please enter your choise (1-8)
             }
         }
 
-
-
         private Vehicle makeNewVehicle(string i_CarModel, string i_LicenseNumber, string i_WheelManufacturer)
         {
             Vehicle.eVehicleType newVehicleType = this.getVehicleTypeFronUser();
@@ -215,10 +210,9 @@ Please enter your choise (1-8)
                         Console.WriteLine("{0}", Environment.NewLine);
                     }
                 }
-
             }
-
         }
+
         private void addNewVehicleToGarage()
         {
             Vehicle newVehicleToAdd;
@@ -227,7 +221,6 @@ Please enter your choise (1-8)
             string carModel;
             string wheelManufacture;
             string licenseNumber;
-
 
             if (isVehicleInTheGarage(r_Garage, out licenseNumber))
             {
@@ -254,7 +247,6 @@ Please enter your choise (1-8)
                 r_Garage.AddNewVehicleToGarage(newVehicleToAdd, clientName, clientPhone);
             }
         }
-
 
         private void getEngineVolumeFromUser(Motorcycle i_Motorcycle)
         {
@@ -286,7 +278,6 @@ Please enter your choise (1-8)
             }
         }
 
-
         private void getMaximumCarryWeightFromUser(Truck i_Truck)
         {
             bool check = false;
@@ -314,8 +305,6 @@ Please enter your choise (1-8)
                     Console.WriteLine("{0}", Environment.NewLine);
                 }
             }
-
-
         }
 
         private void getDangerousMaterialsFromUser(Truck i_Truck)
@@ -329,21 +318,27 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Vehicle carrying dangerous material?{0}1) Yes{0}2) No", Environment.NewLine);
                     bool isNumber = int.TryParse(Console.ReadLine(), out int userChoice);
+
                     if (isNumber == false)
                     {
                         throw new FormatException();
                     }
+
                     if (userChoice <= 0 || userChoice > 2)
                     {
                         throw new ValueOutOfRangeException(1, 2);
                     }
+
                     if (userChoice == 1)
+                    {
                         i_Truck.CarryingDangerousMaterials = true;
+                    }
                     else
+                    {
                         i_Truck.CarryingDangerousMaterials = false;
-
+                    }
+                        
                     inputFlag = true;
-
                 }
                 catch (FormatException)
                 {
@@ -363,7 +358,6 @@ Please enter your choise (1-8)
         }
 
         private void getVehicleColorFromUser(Car i_Car)
-
         {
             bool check = false;
             Screen.Clear();
@@ -374,10 +368,12 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Select vehicle color:{0}1) Red{0}2) Silver{0}3) White{0}4) Black", Environment.NewLine);
                     bool inputValid = int.TryParse(Console.ReadLine(), out int userInput);
+
                     if (inputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (userInput <= 0 || userInput > 4)
                     {
                         throw new ValueOutOfRangeException(1, 4);
@@ -404,6 +400,7 @@ Please enter your choise (1-8)
 
             Screen.Clear();
         }
+
         private void getLicenseTypeFromUser(Motorcycle i_Motorcycle)
         {
             bool check = false;
@@ -415,14 +412,17 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Select vehicle's license type:{0}1) A{0}2) B1{0}3) AA{0}4) BB", Environment.NewLine);
                     bool inputValid = int.TryParse(Console.ReadLine(), out int userInputSelection);
+
                     if (inputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (userInputSelection > 4 || userInputSelection <= 0)
                     {
                         throw new ValueOutOfRangeException(1, 4);
                     }
+
                     i_Motorcycle.LicenseType = (Motorcycle.eLicenseType)userInputSelection;
                     check = true;
                 }
@@ -441,9 +441,7 @@ Please enter your choise (1-8)
                     Console.WriteLine("{0}", Environment.NewLine);
                 }
             }
-
         }
-
 
         private void getNumOfDoorsFromUser(Car i_Car)
         {
@@ -456,17 +454,19 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Enter number of doors (2 - 5):");
                     bool inputValid = int.TryParse(Console.ReadLine(), out int userInput);
+
                     if (inputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (userInput < 2 || userInput > 5)
                     {
                         throw new ValueOutOfRangeException(2, 5);
                     }
+
                     check = true;
                     i_Car.NumbersOfDoors = (Car.eNumOfDoors)userInput;
-
                 }
                 catch (FormatException)
                 {
@@ -484,7 +484,6 @@ Please enter your choise (1-8)
                 }
             }
         }
-
 
         private Vehicle.eVehicleType getVehicleTypeFronUser()
         {
@@ -498,22 +497,30 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Select vehicle type:{0}1) Car{0}2) Truck{0}3) Motorcycle", Environment.NewLine);
                     bool inputValid = int.TryParse(Console.ReadLine(), out int input);
+
                     if (inputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (input <= 0 || input > 3)
                     {
                         throw new ValueOutOfRangeException(0, 3);
                     }
 
                     if (input == 1)
+                    {
                         vehicleType = Vehicle.eVehicleType.Car;
+                    }
                     else if (input == 2)
+                    {
                         vehicleType = Vehicle.eVehicleType.Truck;
+                    }
                     else
+                    {
                         vehicleType = Vehicle.eVehicleType.Motorcycle;
-
+                    }
+                        
                     check = true;
                 }
                 catch (FormatException)
@@ -532,9 +539,7 @@ Please enter your choise (1-8)
                 }
             }
 
-
             return vehicleType;
-
         }
 
         private bool isVehicleInTheGarage(Garage i_Garage, out string i_LicenseNumberToCheck)
@@ -566,10 +571,12 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Please select status:{0}1)Cars in repairs{0}2)Repaired{0}3)Paid ", Environment.NewLine);
                     bool isInputValid = int.TryParse(Console.ReadLine(), out int UserSelection);
+
                     if (isInputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (UserSelection <= 0 || UserSelection > 3)
                     {
                         throw new ValueOutOfRangeException(1, 3);
@@ -603,7 +610,6 @@ Please enter your choise (1-8)
                         {
                             Console.WriteLine("License number - {0}", vehicleLicenseNumber);
                         }
-
                     }
                 }
                 catch (FormatException)
@@ -635,10 +641,12 @@ Please enter your choise (1-8)
                 {
                     Console.WriteLine("Select engine type :{0}1) Fuel engine{0}2) Electric engine", Environment.NewLine);
                     bool inputValid = int.TryParse(Console.ReadLine(), out int UserInput);
+
                     if (inputValid == false)
                     {
                         throw new FormatException();
                     }
+
                     if (UserInput <= 0 || UserInput > 2)
                     {
                         throw new ValueOutOfRangeException(2, 0);
@@ -652,8 +660,8 @@ Please enter your choise (1-8)
                     {
                         engineType = Engine.eTypeOfEngine.Fuel;
                     }
-                    inputFlag = true;
 
+                    inputFlag = true;
                 }
                 catch (FormatException)
                 {
@@ -687,7 +695,6 @@ Please enter your choise (1-8)
                 if (newStatusSelection == 1)
                 {
                     newVehicleStatus = Garage.eStatus.InRepairs;
-
                 }
                 else if (newStatusSelection == 2)
                 {
@@ -695,7 +702,6 @@ Please enter your choise (1-8)
                 }
                 else if (newStatusSelection == 3)
                 {
-
                     newVehicleStatus = Garage.eStatus.Paid;
                 }
                 else
@@ -736,11 +742,8 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
-
         }
-
 
         private Fuel.eFuelType getFuelTypeFromUser()
         {
@@ -756,7 +759,9 @@ Please enter your choise (1-8)
             {
                 throw new ValueOutOfRangeException(4, 1);
             }
+
             Fuel.eFuelType fuelType = Fuel.eFuelType.Octan95;
+
             switch (userSelection)
             {
                 case 1:
@@ -772,9 +777,10 @@ Please enter your choise (1-8)
                     fuelType = Fuel.eFuelType.Soler;
                     break;
             }
-            return fuelType;
 
+            return fuelType;
         }
+
         private void getBatteryChargeFromUser()
         {
             float hoursToCharge = 0;
@@ -786,14 +792,15 @@ Please enter your choise (1-8)
             {
                 Console.WriteLine("Enter how many charge hours to add: ");
                 bool inpuValid = float.TryParse(Console.ReadLine(), out hoursToCharge);
+
                 if (inpuValid == false)
                 {
                     throw new FormatException();
                 }
+
                 r_Garage.ChargeVehicle(licenseNumberToAdd, hoursToCharge);
                 Screen.Clear();
                 Console.WriteLine("{0} hours Charged successfully to Vehicle #{1}", hoursToCharge.ToString(), licenseNumberToAdd, hoursToCharge);
-
             }
             catch (FormatException)
             {
@@ -801,7 +808,6 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("->[Only numbers are acceptable,please enter number]<-");
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
             catch (MissingVehicleException ex)
             {
@@ -809,7 +815,6 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
             catch (EngineTypeException ex)
             {
@@ -817,11 +822,7 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
-
-
-
         }
 
         private void printAllDetails()
@@ -840,7 +841,6 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         private void programExit()
@@ -867,7 +867,6 @@ Please enter your choise (1-8)
                 r_Garage.AddFuel(licenseNumberToAddFuel, fuelType, fuelToAdd);
                 Screen.Clear();
                 Console.WriteLine("{2} {0} Added successfully to Vehicle #{1} ", fuelType.ToString(), licenseNumberToAddFuel, fuelToAdd);
-
             }
             catch (MissingVehicleException ex)
             {
@@ -875,7 +874,6 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
             catch (EngineTypeException ex)
             {
@@ -883,7 +881,6 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
             catch (FuelTypeException ex)
             {
@@ -891,12 +888,7 @@ Please enter your choise (1-8)
                 Console.WriteLine("{0}", Environment.NewLine);
                 Console.WriteLine("{0}", ex.Message);
                 Console.WriteLine("{0}", Environment.NewLine);
-
             }
-
-
-
         }
-
     }
 }

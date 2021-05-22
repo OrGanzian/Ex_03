@@ -18,15 +18,13 @@ namespace Ex03.GarageLogic
             Repaired,
             Paid,
         }
+
         public Dictionary<string, VehicleInGarage> CarsInTheGarage
         {
             get { return this.m_CarsList; }
         }
 
-
-        public eStatus CarStatus
-        { get; private set; }
-
+        public eStatus CarStatus { get; private set; }
 
         public void AddAirPressure(string i_LicenseNumber)
         {
@@ -43,6 +41,7 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
         public void ChangeVehicleStatus(string i_LicenseNumber, eStatus i_CarStatus)
         {
             VehicleInGarage vehicleAlreadyInside = IsExistsInGarage(i_LicenseNumber);
@@ -66,7 +65,6 @@ namespace Ex03.GarageLogic
             return VehicleInGarage;
         }
 
-
         public List<string> GetListOfAllLicensesNumber()
         {
             List<string> licenseListToReturn = new List<string>();
@@ -86,12 +84,13 @@ namespace Ex03.GarageLogic
             foreach (VehicleInGarage licenseNumber in CarsInTheGarage.Values)
             {
                 if (licenseNumber.CurrentStatus == i_Status)
+                {
                     licenseListByStatusToReturn.Add(licenseNumber.Vehicle.LicenseNumber);
+                } 
             }
 
             return licenseListByStatusToReturn;
         }
-
 
         public void AddFuel(string i_VehicleLicenseNumber, Fuel.eFuelType i_FuelType, float i_FuelAmountToAdd)
         {
@@ -110,13 +109,14 @@ namespace Ex03.GarageLogic
             }
 
             vehicleInGarage.Vehicle.EngineType.AddEnergy(i_FuelAmountToAdd);
-
         }
+
         public void AddNewVehicleToGarage(Vehicle i_NewVehicleToAdd, string i_ClientName, string i_ClientPhone)
         {
             VehicleInGarage newVehicleToAdd = new VehicleInGarage(i_ClientName, i_ClientPhone, i_NewVehicleToAdd);
             CarsInTheGarage.Add(i_NewVehicleToAdd.LicenseNumber, newVehicleToAdd);
         }
+
         public bool InsertVehicleToGarage(Vehicle i_Vehicle, string i_OwnersName, string i_OwnerPhone)
         {
             bool vehicleAlreadyInside = CarsInTheGarage.ContainsKey(i_Vehicle.LicenseNumber);
@@ -125,7 +125,6 @@ namespace Ex03.GarageLogic
             {
                 vehicleAlreadyInside = true;
                 ChangeVehicleStatus(i_Vehicle.LicenseNumber, eStatus.InRepairs);
-
             }
             else
             {
@@ -134,8 +133,6 @@ namespace Ex03.GarageLogic
 
             return vehicleAlreadyInside;
         }
-
-
 
         public string GetVehicleDetails(string i_LicenseNumber)
         {
@@ -147,6 +144,7 @@ namespace Ex03.GarageLogic
 
             return DemandVehicle.ToString();
         }
+
         public void ChargeVehicle(string i_LicenseNumber, float i_TimeToCharge)
         {
             VehicleInGarage vehicleInGarage = IsExistsInGarage(i_LicenseNumber);
@@ -165,6 +163,5 @@ namespace Ex03.GarageLogic
                 (vehicleInGarage?.Vehicle.EngineType)?.AddEnergy(i_TimeToCharge);
             }
         }
-       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Ex03.GarageLogic
 {
     public class Battery : Engine
@@ -8,8 +9,7 @@ namespace Ex03.GarageLogic
             ElectricalPower,
         }
 
-        public eTypeOfFuel FuelType
-        { get; set; }
+        public eTypeOfFuel FuelType { get; set; }
 
         public override string ToString()
         {
